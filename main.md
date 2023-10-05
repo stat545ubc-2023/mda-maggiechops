@@ -429,7 +429,7 @@ communities, between seasons and over time in Vancouver?**
 
 Let’s begin!
 
-#### Investigating and plotting the number of missing values per variable
+### Investigating and plotting the number of missing values per variable
 
 We will start by exploring how many missing values exist in this dataset
 as it will give us insight into the quality of the data we are working
@@ -486,11 +486,15 @@ above.
       theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8), 
             axis.text.y = element_text(size = 10))
 
-![](mini-project-1_files/figure-markdown_strict/unnamed-chunk-7-1.png)
+![](main_files/figure-markdown_strict/unnamed-chunk-7-1.png)
 
-    #note: if we wanted to only plot variables with missing data, we could first filter(perc_missing > 0). Since I wanted to visualize the number of variables that have missing data in relation to the total number of variables in the dataset, I decided to not pre-filter the data before plotting.
+**Note**: If we wanted to only plot variables with missing data, we
+could first filter(perc\_missing &gt; 0). Since I wanted to visualize
+the number of variables that have missing data in relation to the total
+number of variables in the dataset, I decided to not pre-filter the data
+before plotting.
 
-#### Creating a new season variable
+### Creating a new season variable
 
 I am interested in investigating how tree planting trends change
 throughout the year and whether seasonality plays a role. For this
@@ -588,11 +592,17 @@ defined the seasons as listed in the table below:
       xlab("Season") +
       ylab("Number of trees")
 
-![](mini-project-1_files/figure-markdown_strict/unnamed-chunk-8-1.png)
+![](main_files/figure-markdown_strict/unnamed-chunk-8-1.png)
 
-    #I did some reading into the case_when() dplyr function which is like the if_else() function briefly mentioned in class. I could have structured the code to have several if_else statements nested in each other, but case_when() allows me to return a particular value (~ " ") if the condition is met (month_planted %in% c(x, y, z)). This function meets the need I have to assign specific season labels based on different month conditions. 
+**Note:** For the exercise above, I did some reading into the
+case\_when() dplyr function which is like the if\_else() function
+briefly mentioned in class. I could have structured the code to have
+several if\_else statements nested in each other, but case\_when()
+allows me to return a particular value (~ ” “) if the condition is met
+(month\_planted %in% c(x, y, z)). This function meets the need I have to
+assign specific season labels based on different month conditions.
 
-#### Exploring the distribution of Maple trees (Acer genus) across Vancouver communities
+### Exploring the distribution of Maple trees (Acer genus) across Vancouver communities
 
 I am also interested in exploring the extent of diversity in the trees
 planted across different neighborhoods in Vancouver. As this dataset we
@@ -601,7 +611,9 @@ variability, I will start by plotting the number of Maple trees (my
 favourite type of tree and a symbol national Canadian identity!) across
 various Vancouver communities.
 
-    #to plot the distribution of maple trees (Acer genus) across Vancouver communities, we need to first group the data by neighbourhood, then filter to only select and count tees from the Acer genus
+    #plotting the distribution of maple trees (Acer genus) across Vancouver communities
+    #we need to first group the data by neighbourhood
+    #then filter to only select and count tees from the Acer genus
     acer_count <- vancouver_trees %>%
       group_by(neighbourhood_name) %>%
       filter(genus_name == "ACER") %>%
@@ -624,16 +636,16 @@ various Vancouver communities.
     ## 10 KITSILANO                       2211
     ## # ℹ 12 more rows
 
-    #now we can plot the number of acer trees (x) in different neighbourhoods (y). We do not want geom_bar() to count the entries itself, so we will indicate stat = "identity" to ensure the bar chart is created with the values already listed in the acer_count table
+    #plotting number of acer trees in different neighbourhoods 
     ggplot(acer_count, aes(x = total_trees, y = neighbourhood_name)) +
       geom_bar(stat = "identity") +
       ggtitle("Acer Trees Throughout Vancouver Neighbourhoods ") +
       xlab("Total Acer trees") +
       ylab("")
 
-![](mini-project-1_files/figure-markdown_strict/unnamed-chunk-9-1.png)
+![](main_files/figure-markdown_strict/unnamed-chunk-9-1.png)
 
-#### Filtering the data to look at species of trees within the Acer genus
+### Filtering the data to look at species of trees within the Acer genus
 
 In the previous exercise, we explored the number of Maple (Acer) trees
 across various Vancouver communities. Certain species of Maple trees,
@@ -646,8 +658,10 @@ sap due to increased Sugar Maple planting. The following filtering
 approach could be modified to look at different tree species, specific
 neighbourhoods, etc. in subsequent analyses.
 
-    #first we want to filter for only Acer trees, as well as remove any data where neighbourhood or species name is missing
-    #then we should group by neighborhood and tree species to count the number of each species in each neighborhood
+    #first we want to filter for only Acer trees 
+    #also we should remove any data where neighbourhood or species name is missing
+    #then we should group by neighborhood and tree species
+    #lastly count the number of each species in each neighborhood
     species_by_neighborhood <- vancouver_trees %>%
       filter(genus_name == "ACER" & !is.na(neighbourhood_name) & !is.na(species_name)) %>%  
       group_by(neighbourhood_name, species_name) %>%  
@@ -691,12 +705,13 @@ Write the 4 questions and any additional comments below.
 
 <!--- *****START HERE***** --->
 
-1.  How has the rate of tree planting changed across years?
-2.  How does tree planting correlate with seasonality? Are more trees
-    planted in certain months or seasons?
-3.  Are some neighborhoods more diverse in their range of tree species
-    than others?
-4.  Are certain tree species more prevalent in specific neighborhoods?
+1.  **How has the rate of tree planting changed across years?**
+2.  **How does tree planting correlate with seasonality? Are more trees
+    planted in certain months or seasons?**
+3.  **Are some neighborhoods more diverse in their range of tree species
+    than others?**
+4.  **Are certain tree species more prevalent in specific
+    neighborhoods?**
 
 <!----------------------------->
 

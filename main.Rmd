@@ -2,7 +2,7 @@
 title: "Mini Data-Analysis"
 author: "Maggie Chopra"
 date: "2023-09-28"
-output: html_document
+output: md_document
 ---
 # Welcome to your (maybe) first-ever data analysis project!
 
@@ -212,6 +212,7 @@ na_summary%>%
         axis.text.y = element_text(size = 10))
 
 ```
+
 **Note**: If we wanted to only plot variables with missing data, we could first filter(perc_missing > 0). Since I wanted to visualize the number of variables that have missing data in relation to the total number of variables in the dataset, I decided to not pre-filter the data before plotting.
 
 ### Creating a new season variable 
@@ -254,6 +255,7 @@ vancouver_trees %>%
   ylab("Number of trees")
 
 ```
+
 **Note:** For the exercise above, I did some reading into the case_when() dplyr function which is like the if_else() function briefly mentioned in class. I could have structured the code to have several if_else statements nested in each other, but case_when() allows me to return a particular value (~ " ") if the condition is met (month_planted %in% c(x, y, z)). This function meets the need I have to assign specific season labels based on different month conditions. 
 
 
@@ -300,6 +302,7 @@ species_by_neighborhood <- vancouver_trees %>%
 print(species_by_neighborhood)
 
 ```
+
 Looks like PLATANOIDES and RUBRUM are the most common species of Acer tree across neighbourhoods in Vancouver. We can explore these patterns further in milestone 2!
 
 <!----------------------------------------------------------------------------->
@@ -310,10 +313,10 @@ Looks like PLATANOIDES and RUBRUM are the most common species of Acer tree acros
 
 <!--- *****START HERE***** --->
 
-1. How has the rate of tree planting changed across years?
-2. How does tree planting correlate with seasonality? Are more trees planted in certain months or seasons?
-3. Are some neighborhoods more diverse in their range of tree species than others?
-4. Are certain tree species more prevalent in specific neighborhoods?
+1. **How has the rate of tree planting changed across years?**
+2. **How does tree planting correlate with seasonality? Are more trees planted in certain months or seasons?**
+3. **Are some neighborhoods more diverse in their range of tree species than others?**
+4. **Are certain tree species more prevalent in specific neighborhoods?**
 
 <!----------------------------->
 
