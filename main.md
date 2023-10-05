@@ -419,13 +419,13 @@ sufficient comments for a reader to understand your reasoning and code.
 
 ## INTRODUCTION
 
-To better understand the **vancouver\_trees** dataset, we will complete
-some exercises and dive deeper into the data. Please follow along below
-as we work through 4 tasks aimed at giving yet better insight. We will
-use the **dplyr** package to manipulate the data and **ggplot2** for
-data visualization. Ultimately, we hope to answer the following
-question: **Are there patterns to tree planting amongst various
-communities, between seasons and over time in Vancouver?**
+Hello everyone! To better understand the **vancouver\_trees** dataset,
+we will complete some exercises and dive deeper into the data. Please
+follow along below as we work through 4 tasks aimed at giving yet better
+insight. We will use the **dplyr** package to manipulate the data and
+**ggplot2** for data visualization. Ultimately, we hope to answer the
+following question: **Are there patterns to tree planting amongst
+various communities, between seasons and over time in Vancouver?**
 
 Let’s begin!
 
