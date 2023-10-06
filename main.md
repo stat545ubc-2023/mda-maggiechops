@@ -1,3 +1,5 @@
+# Mini Data-Analysis (STAT545A)
+
 # Welcome to your (maybe) first-ever data analysis project!
 
 And hopefully the first of many. Let’s get started:
@@ -5,30 +7,27 @@ And hopefully the first of many. Let’s get started:
 1.  Install the [`datateachr`](https://github.com/UBC-MDS/datateachr)
     package by typing the following into your **R terminal**:
 
-<!-- -->
+          #remove the hashtag ('#') symbol before the lines of code you wish to run below:
+          #install.packages("devtools")
+          #devtools::install_github("UBC-MDS/datateachr")
 
-    #install.packages("devtools")
-    #devtools::install_github("UBC-MDS/datateachr")
+2.  Load the packages below.
 
-1.  Load the packages below.
+        library(datateachr)
+        library(tidyverse)
 
-<!-- -->
+        ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+        ## ✔ dplyr     1.1.3     ✔ readr     2.1.4
+        ## ✔ forcats   1.0.0     ✔ stringr   1.5.0
+        ## ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+        ## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+        ## ✔ purrr     1.0.1     
+        ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+        ## ✖ dplyr::filter() masks stats::filter()
+        ## ✖ dplyr::lag()    masks stats::lag()
+        ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 
-    library(datateachr)
-    library(tidyverse)
-
-    ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-    ## ✔ dplyr     1.1.3     ✔ readr     2.1.4
-    ## ✔ forcats   1.0.0     ✔ stringr   1.5.0
-    ## ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-    ## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-    ## ✔ purrr     1.0.1     
-    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    ## ✖ dplyr::filter() masks stats::filter()
-    ## ✖ dplyr::lag()    masks stats::lag()
-    ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-
-1.  Make a repository in the <https://github.com/stat545ubc-2023>
+3.  Make a repository in the <https://github.com/stat545ubc-2023>
     Organization. You can do this by following the steps found on canvas
     in the entry called [MDA: Create a
     repository](https://canvas.ubc.ca/courses/126199/pages/mda-create-a-repository).
@@ -168,7 +167,7 @@ The cancer sample (`cancer_sample`) data set was acquired as courtesy of
 the UCI Machine Learning Repository and comprises patient IDs, diagnosis
 and 30 other aspects of tumours from 569 cancer patients.
 
-    class(cancer_sample) #this data is structured as a data frame, tibble and ****spec_tbl_df??
+    class(cancer_sample) #this data is structured as a data frame and different tibble variations (tbl, tbl_df, spec_tbl_df)
 
     ## [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame"
 
@@ -209,6 +208,11 @@ and 30 other aspects of tumours from 569 cancer patients.
     ## $ symmetry_worst          <dbl> 0.4601, 0.2750, 0.3613, 0.6638, 0.2364, 0.3985…
     ## $ fractal_dimension_worst <dbl> 0.11890, 0.08902, 0.08758, 0.17300, 0.07678, 0…
 
+The `cancer_sample` dataset primarily contains rows of patient data and
+mainly numeric variables that characterize patient tumour features in
+great depth (ie. radius, texture, perimeter, area, smoothness,
+compactness, etc.).
+
 #### Vancouver trees
 
 The Vancouver trees (`vancouver_trees`) data was acquired as courtesy of
@@ -244,13 +248,19 @@ specifics about 146611 trees in Vancouver.
     ## $ longitude          <dbl> -123.1161, -123.1147, -123.0846, -123.0870, -123.08…
     ## $ latitude           <dbl> 49.21776, 49.21776, 49.23938, 49.23469, 49.23894, 4…
 
+The `vancouver_trees` dataset contains a wide variety of information on
+trees planted in Vancouver area, including features about location, tree
+type, height, diameter, date planted, etc. Owing to its large size and
+various types of variables, this dataset would be very informative to
+learn from!
+
 #### Apartment buildings
 
 The apartment buildings (`apt_buildings`) data was acquired as courtesy
 of The City of Toronto’s Open Data Portal and comprises 37 aspects of
 apartment listings for 3455 rental units.
 
-    class(apt_buildings) #this data is structured as a data frame and tibble
+    class(apt_buildings) #this data is structured as a data frame and tibble (tbl, tbl_df)
 
     ## [1] "tbl_df"     "tbl"        "data.frame"
 
@@ -296,13 +306,20 @@ apartment listings for 3455 rental units.
     ## $ cooling_room                     <chr> "NO", "NO", "NO", "NO", "NO", "NO", "…
     ## $ no_barrier_free_accessible_units <dbl> 2, 0, 0, 42, 0, NA, 14, 0, 0, 1, 25, …
 
+The `apt_buildings` dataset has detailed apartment information including
+building amenities, property features such as balcony, window types,
+year built and registered, etc. At quick glance, some of the categorical
+variables such as parking type are not standardized in their structure
+(ie. underground garage vs garage accessible thru building, etc.) so may
+make analysis challenging.
+
 #### Flow sample
 
 The flow sample (`flow_sample`) dataset was acquired as courtesy of The
 Government of Canada’s Historical Hydrometric Database and comprises 7
 features of flow rate information for 218 observations.
 
-    class(flow_sample) #this data is structured as a data frame and tibble
+    class(flow_sample) #this data is structured as a data frame and tibble (tbl, tbl_df)
 
     ## [1] "tbl_df"     "tbl"        "data.frame"
 
@@ -318,6 +335,12 @@ features of flow rate information for 218 observations.
     ## $ flow         <dbl> 314, 230, 264, 174, 232, 214, 236, 309, 174, 345, 185, 24…
     ## $ sym          <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
 
+The `flow_sample` dataset is relatively smaller and contains variables
+that I do not personally recognize as I am unfamiliar with flow data. At
+quick glance, there also appears to be a lot of missing data, especially
+in the ‘sym’ variable which, with an already small dataset, may make
+analysis challenging.
+
 <!----------------------------------------------------------------------------->
 
 1.3 **(1 point)** Now that you’ve explored the 4 datasets that you were
@@ -328,14 +351,16 @@ to choose this one? Briefly explain your choice below.
 
 While I was initially interested in the cancer\_samples dataset as my
 background and PhD is in immunology and human health, I have decided to
-explore the vancouver\_trees dataset as it contains a larger variety of
-type of variables (both numeric and categorical data). As an
-out-of-province student, I admire Vancouver’s greenery and am interested
-in exploring more about the various tree species located throughout this
-beautiful city. I often commute for work and classes between Fairview
-and UBC campus, so I would be intrigued to use this dataset to visualize
-more information about the tree landscape I see while en route on the 99
-bus line!
+explore the vancouver\_trees dataset as it contains a variety of
+variable types (both numeric and categorical data) and is a large
+dataset. I am hoping to learn how to handle big datasets as I will be
+working with this type of data during my graduate studies. As a non-BC
+student, I admire Vancouver’s greenery and am interested in exploring
+more about the various tree species located throughout this beautiful
+city. I often commute for work and classes between Fairview and UBC
+campus, so I would be intrigued to use this dataset to visualize more
+information about the landscape I see while en route on the 99 bus line
+(and learn more about trees in the process)!
 
 <!----------------------------------------------------------------------------->
 
@@ -419,36 +444,36 @@ sufficient comments for a reader to understand your reasoning and code.
 
 ## INTRODUCTION
 
-Hello everyone! To better understand the **vancouver\_trees** dataset,
-we will complete some exercises and dive deeper into the data. Please
-follow along below as we work through 4 tasks aimed at giving yet better
-insight. We will use the **dplyr** package to manipulate the data and
-**ggplot2** for data visualization. Ultimately, we hope to answer the
-following question: **Are there patterns to tree planting amongst
-various communities, between seasons and over time in Vancouver?**
+Hello everyone! To better understand the `vancouver_trees` dataset, we
+will complete some exercises and dive deeper into the data. Please
+follow along below as we work through 4 tasks aimed at giving us better
+insight. We will use the [dplyr](https://dplyr.tidyverse.org/) package
+to manipulate the data and [ggplot2](https://ggplot2.tidyverse.org/) for
+data visualization. Ultimately, we hope to address the following
+question: **Are there patterns to tree planting amongst various
+communities, between seasons and over time in Vancouver?**
 
-Let’s begin!
+*Let’s begin!*
 
 ### Investigating and plotting the number of missing values per variable
 
 We will start by exploring how many missing values exist in this dataset
 as it will give us insight into the quality of the data we are working
 with. Analyzing which variables have the most missing data is important
-as this may lead to biased conclusions. Additionally, we should be aware
-that removing rows with missing values may skew our dataset if there are
-patterns to the missingness (i.e. if dates for all ‘x’ genus of tree are
-not indexed, removing rows with missing dates before proceeding with the
-analysis will make it appear like that ‘x’ genus of tree is not present
-in Vancouver). Altogether, exploring and visualizing the number of
-missing values per variable is a starting place to address the concerns
-above.
+as missing data may lead to biased conclusions. Additionally, we should
+be aware that removing rows with missing values may skew our dataset if
+there are patterns to the missingness (i.e. if dates for all ‘x’ genus
+of tree are not indexed, removing rows with missing dates before
+proceeding with the analysis will make it incorrectly appear as if the
+‘x’ genus of tree is not present in Vancouver). Altogether, exploring
+and visualizing the number of missing values per variable is a starting
+place to address the concerns above.
 
     # create na_summary tibble that contains variable numbers in one column, counts the number of missing values and calculates the percentage of missing values per variable.
     na_summary <- tibble(
       variable = colnames(vancouver_trees),
       num_missing = colSums(is.na(vancouver_trees)),
-      perc_missing = num_missing / nrow(vancouver_trees) * 100
-      )
+      perc_missing = num_missing / nrow(vancouver_trees) * 100)
 
     print(na_summary) #lets take a look at the tibble 
 
@@ -480,19 +505,19 @@ above.
     na_summary%>%
       ggplot(aes(x = variable, y = perc_missing)) +
       geom_bar(stat = "identity") +
-      ggtitle("Percentage of Missing Values Per Variable") +
       xlab("Variables") +
       ylab("Percentage of Missing Values") +
+      ggtitle("Percentage of Missing Values Per Variable") +
       theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8), 
             axis.text.y = element_text(size = 10))
 
 ![](main_files/figure-markdown_strict/unnamed-chunk-7-1.png)
 
 **Note**: If we wanted to only plot variables with missing data, we
-could first filter(perc\_missing &gt; 0). Since I wanted to visualize
-the number of variables that have missing data in relation to the total
-number of variables in the dataset, I decided to not pre-filter the data
-before plotting.
+could first use a filter (such as `filter(perc_missing > 0)`). Since I
+wanted to visualize the number of variables that have missing data in
+relation to the total number of variables in the dataset, I decided to
+not pre-filter the data before plotting.
 
 ### Creating a new season variable
 
@@ -582,12 +607,9 @@ defined the seasons as listed in the table below:
                month_planted %in% c(6, 7, 8) ~ "Summer",
                month_planted %in% c(9, 10, 11) ~ "Fall",
                month_planted %in% c(12, 1, 2) ~ "Winter", 
-               TRUE ~ "Unknown"
-             )
-           ) %>%
+               TRUE ~ "Unknown")) %>%
       ggplot(aes(x = season)) +
       geom_bar() +
-      theme_minimal() +
       ggtitle("Number of trees planted during different seasons") +
       xlab("Season") +
       ylab("Number of trees")
@@ -602,10 +624,23 @@ allows me to return a particular value (~ ” “) if the condition is met
 (month\_planted %in% c(x, y, z)). This function meets the need I have to
 assign specific season labels based on different month conditions.
 
+It is interesting to see that the majority of trees included in this
+dataset are planted in the winter! I had previously heard that fall and
+spring are good times to plant. Interestingly, the graph above prompted
+me to look into why planting in colder months would be advantageous and
+I learned that during winter trees enter dormancy where they conserve
+their energy in their roots, allowing for them to develop an energy
+store that permits their prosperous growth during the springtime (see
+[here](https://lifecyclesproject.ca/2021/11/03/when-is-the-best-time-to-plant-a-fruit-tree/)
+for more information. Since the ground doesn’t freeze over as much in
+Vancouver like it does in other regions perhaps that’s why winter is a
+popular planting season. I wonder how these patterns would vary in
+colder and snowy cities such as Calgary…
+
 ### Exploring the distribution of Maple trees (Acer genus) across Vancouver communities
 
 I am also interested in exploring the extent of diversity in the trees
-planted across different neighborhoods in Vancouver. As this dataset we
+planted across different neighborhoods in Vancouver. As the dataset we
 are working with is quite large, to get a glimpse at potential
 variability, I will start by plotting the number of Maple trees (my
 favourite type of tree and a symbol national Canadian identity!) across
@@ -615,9 +650,9 @@ various Vancouver communities.
     #we need to first group the data by neighbourhood
     #then filter to only select and count tees from the Acer genus
     acer_count <- vancouver_trees %>%
-      group_by(neighbourhood_name) %>%
-      filter(genus_name == "ACER") %>%
-      summarise(total_trees = n()) 
+                  group_by(neighbourhood_name) %>%
+                  filter(genus_name == "ACER") %>%
+                  summarise(total_trees = n()) 
 
     print(acer_count)
 
@@ -636,12 +671,12 @@ various Vancouver communities.
     ## 10 KITSILANO                       2211
     ## # ℹ 12 more rows
 
-    #plotting number of acer trees in different neighbourhoods 
+    #plotting number of Acer trees in different neighbourhoods 
     ggplot(acer_count, aes(x = total_trees, y = neighbourhood_name)) +
       geom_bar(stat = "identity") +
-      ggtitle("Acer Trees Throughout Vancouver Neighbourhoods ") +
       xlab("Total Acer trees") +
-      ylab("")
+      ylab("") +
+      ggtitle("Acer Trees Throughout Vancouver Neighbourhoods ")
 
 ![](main_files/figure-markdown_strict/unnamed-chunk-9-1.png)
 
@@ -654,19 +689,21 @@ to create maple syrup. I am interested in further characterizing the
 distribution of various species of Maple trees in Vancouver. While I am
 pretty sure tapping trees within the city is likely illegal, it would be
 interesting to see whether certain communities have a greater yield of
-sap due to increased Sugar Maple planting. The following filtering
-approach could be modified to look at different tree species, specific
-neighbourhoods, etc. in subsequent analyses.
+sap (more Sugar Maple trees). The following filtering approach could be
+modified to look at different tree species, specific neighbourhoods,
+etc. in subsequent analyses.
 
     #first we want to filter for only Acer trees 
     #also we should remove any data where neighbourhood or species name is missing
     #then we should group by neighborhood and tree species
     #lastly count the number of each species in each neighborhood
     species_by_neighborhood <- vancouver_trees %>%
-      filter(genus_name == "ACER" & !is.na(neighbourhood_name) & !is.na(species_name)) %>%  
-      group_by(neighbourhood_name, species_name) %>%  
-      summarise(count = n()) %>%
-      arrange(desc(count))
+                                filter(genus_name == "ACER" & 
+                                        !is.na(neighbourhood_name) & 
+                                        !is.na(species_name)) %>%  
+                                group_by(neighbourhood_name, species_name) %>%  
+                                summarise(count = n()) %>%
+                                arrange(desc(count))
 
     ## `summarise()` has grouped output by 'neighbourhood_name'. You can override
     ## using the `.groups` argument.
