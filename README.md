@@ -9,6 +9,7 @@ In this repository, you can find the following files:
 * `main.Rmd`: the R Markdown file where bulk of the analysis for this assignment was conducted 
 * `main.md`: the output file produced after knitting the .Rmd file
 * `main_files`: a folder containing R Markdown-associated files such as figures
+* `README.md`: the document you are currently reading that outlines an overview of this project and orients the reader to the structure and contents of this repository 
 
 ***
 
