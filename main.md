@@ -728,7 +728,7 @@ etc. in subsequent analyses.
 
 Looks like PLATANOIDES and RUBRUM are the most common species of Acer
 tree across neighbourhoods in Vancouver. We can explore these patterns
-further in milestone 2!
+further in Milestone 2!
 
 <!----------------------------------------------------------------------------->
 
@@ -750,7 +750,8 @@ Write the 4 questions and any additional comments below.
 4.  **Are certain tree species more prevalent in specific
     neighborhoods?**
 
-<!----------------------------->
+Stay tuned to explore the above and other related questions in Milestone
+2 next! <!----------------------------->
 
 # Overall reproducibility/Cleanliness/Coherence Checklist
 
