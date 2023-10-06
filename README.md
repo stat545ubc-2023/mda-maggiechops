@@ -13,4 +13,4 @@ In this repository, you can find the following files:
 
 ***
 
-To engage with this repository, simply run the code chunks from top to bottom to reproduce the analysis highlighted in the .Rmd file. This project analyzes datasets available through the [datateachr](https://github.com/UBC-MDS/datateachr) package, as well as [dplyr](https://dplyr.tidyverse.org/) and [ggplot2](https://ggplot2.tidyverse.org/) packages in R for data manipulation and visualization, respectively.
+To engage with this repository, simply run the code chunks from top to bottom to reproduce the analysis highlighted in the .Rmd file. This project analyzes datasets available through the [datateachr](https://github.com/UBC-MDS/datateachr) package, as well as [dplyr](https://dplyr.tidyverse.org/) and [ggplot2](https://ggplot2.tidyverse.org/) packages in R for data manipulation and visualization, respectively. 

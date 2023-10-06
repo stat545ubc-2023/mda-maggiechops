@@ -357,10 +357,10 @@ dataset. I am hoping to learn how to handle big datasets as I will be
 working with this type of data during my graduate studies. As a non-BC
 student, I admire Vancouver’s greenery and am interested in exploring
 more about the various tree species located throughout this beautiful
-city. I often commute for work and classes between Fairview and UBC
-campus, so I would be intrigued to use this dataset to visualize more
-information about the landscape I see while en route on the 99 bus line
-(and learn more about trees in the process)!
+city. I commute for work and classes between Fairview and UBC campus, so
+I am intrigued to use this dataset to investigate the landscape I see
+while en route on the 99 bus line (and learn more about trees in the
+process)!
 
 <!----------------------------------------------------------------------------->
 
@@ -462,14 +462,16 @@ as it will give us insight into the quality of the data we are working
 with. Analyzing which variables have the most missing data is important
 as missing data may lead to biased conclusions. Additionally, we should
 be aware that removing rows with missing values may skew our dataset if
-there are patterns to the missingness (i.e. if dates for all ‘x’ genus
-of tree are not indexed, removing rows with missing dates before
-proceeding with the analysis will make it incorrectly appear as if the
-‘x’ genus of tree is not present in Vancouver). Altogether, exploring
-and visualizing the number of missing values per variable is a starting
-place to address the concerns above.
+there are patterns to the missingness (i.e. if `date_planted` is not
+documented for all entries of a given ‘x’ genus of tree, removing rows
+with missing dates before proceeding with the analysis will make it
+incorrectly appear as if the ‘x’ genus of tree is not present in
+Vancouver). Altogether, exploring and visualizing the number of missing
+values per variable is a starting place to address the concerns above.
 
-    # create na_summary tibble that contains variable numbers in one column, counts the number of missing values and calculates the percentage of missing values per variable.
+    # create na_summary tibble that contains variables in one column + 
+    #counts the number of missing values per variable + 
+    #calculates the percentage of missing values per variable
     na_summary <- tibble(
       variable = colnames(vancouver_trees),
       num_missing = colSums(is.na(vancouver_trees)),
@@ -598,16 +600,16 @@ defined the seasons as listed in the table below:
 </tbody>
 </table>
 
-    #creating a new "season" column where the Spring, Summer, Fall or Winter label is assigned to each tree based on the month it was planted
+    #creating a new "season" column
+    #the Spring, Summer, Fall or Winter label is assigned to each row (tree) based on the month it was planted
     vancouver_trees %>%
       filter(!is.na(date_planted)) %>% 
       mutate(month_planted = month(date_planted),
-             season = case_when(
-               month_planted %in% c(3, 4, 5) ~ "Spring",
-               month_planted %in% c(6, 7, 8) ~ "Summer",
-               month_planted %in% c(9, 10, 11) ~ "Fall",
-               month_planted %in% c(12, 1, 2) ~ "Winter", 
-               TRUE ~ "Unknown")) %>%
+             season = case_when(month_planted %in% c(3, 4, 5) ~ "Spring",
+                                month_planted %in% c(6, 7, 8) ~ "Summer",
+                                month_planted %in% c(9, 10, 11) ~ "Fall",
+                                month_planted %in% c(12, 1, 2) ~ "Winter", 
+                                TRUE ~ "Unknown")) %>%
       ggplot(aes(x = season)) +
       geom_bar() +
       ggtitle("Number of trees planted during different seasons") +
@@ -625,24 +627,24 @@ allows me to return a particular value (~ ” “) if the condition is met
 assign specific season labels based on different month conditions.
 
 It is interesting to see that the majority of trees included in this
-dataset are planted in the winter! I had previously heard that fall and
+dataset are planted in the *winter*! I previously believed that fall and
 spring are good times to plant. Interestingly, the graph above prompted
-me to look into why planting in colder months would be advantageous and
-I learned that during winter trees enter dormancy where they conserve
+me to look into why planting in colder months would be advantageous in
+Vancouver. During the winter, trees enter dormancy where they conserve
 their energy in their roots, allowing for them to develop an energy
-store that permits their prosperous growth during the springtime (see
+store that permits their prosperous growth during the spring-time (see
 [here](https://lifecyclesproject.ca/2021/11/03/when-is-the-best-time-to-plant-a-fruit-tree/)
-for more information. Since the ground doesn’t freeze over as much in
-Vancouver like it does in other regions perhaps that’s why winter is a
-popular planting season. I wonder how these patterns would vary in
-colder and snowy cities such as Calgary…
+for an interesting read). Since the ground doesn’t freeze over as much
+in Vancouver, perhaps that’s what allows winter to be a popular planting
+season here. I wonder how these patterns would vary in colder and
+snowier cities such as Calgary…
 
 ### Exploring the distribution of Maple trees (Acer genus) across Vancouver communities
 
 I am also interested in exploring the extent of diversity in the trees
 planted across different neighborhoods in Vancouver. As the dataset we
 are working with is quite large, to get a glimpse at potential
-variability, I will start by plotting the number of Maple trees (my
+variability, I will start by plotting the number of **Maple trees** (my
 favourite type of tree and a symbol national Canadian identity!) across
 various Vancouver communities.
 
@@ -682,16 +684,17 @@ various Vancouver communities.
 
 ### Filtering the data to look at species of trees within the Acer genus
 
-In the previous exercise, we explored the number of Maple (Acer) trees
-across various Vancouver communities. Certain species of Maple trees,
-particularly the Sugar Maple (Acer saccharum), can be used for their sap
-to create maple syrup. I am interested in further characterizing the
-distribution of various species of Maple trees in Vancouver. While I am
-pretty sure tapping trees within the city is likely illegal, it would be
-interesting to see whether certain communities have a greater yield of
-sap (more Sugar Maple trees). The following filtering approach could be
-modified to look at different tree species, specific neighbourhoods,
-etc. in subsequent analyses.
+In the previous exercise, we explored the number of Maple (Acer genus)
+trees across various Vancouver communities. Certain species of Maple
+trees, particularly the Sugar Maple (Acer saccharum), can be tapped for
+their sap which is used to create maple syrup. I am interested in
+further characterizing the distribution of various species of Maple
+trees in Vancouver. While I am pretty sure tapping trees within the city
+is likely illegal, it would be interesting to see whether certain
+communities have a greater yield of sap (more Sugar Maple trees).
+Moreover, the following filtering approach could be modified to look at
+different tree species, specific neighbourhoods, etc. in subsequent
+analyses.
 
     #first we want to filter for only Acer trees 
     #also we should remove any data where neighbourhood or species name is missing
@@ -727,8 +730,8 @@ etc. in subsequent analyses.
     ## # ℹ 410 more rows
 
 Looks like PLATANOIDES and RUBRUM are the most common species of Acer
-tree across neighbourhoods in Vancouver. We can explore these patterns
-further in Milestone 2!
+tree across neighbourhoods in Vancouver. We can plot as well as explore
+these patterns further in Milestone 2!
 
 <!----------------------------------------------------------------------------->
 
