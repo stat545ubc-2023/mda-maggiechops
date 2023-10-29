@@ -324,14 +324,15 @@ Based on the definition above, can you identify if your data is tidy or untidy? 
 <!--------------------------- Start your work below --------------------------->
 
 The `vancouver_trees` data set contains tidy data as each row represents one tree (observation), each column is a variable by which to describe this tree and each cell contains just one value. Refer to the list below for a description of why 8 randomly selected variables from this data set demonstrate that the data is tidy:
-* `tree_id` - a quantitative variable, each indexed row (tree observation is assigned a specific numeric value to serve as a tree identifier
-* `genus_name` - a character variable, each indexed row (tree observation) is assigned to a specific genus name
-* `species_name` - a character variable, each indexed row (tree observation) is assigned to a specific species name
-* `on_street` - a character variable, each indexed row (tree observation) is associated with a specific street 
-* `neighbourhood_name` - a character variable, each indexed row (tree observation) is located in a specific neighbourhood 
-* `height_range_id` - a numeric variable, each indexed row (tree observation) is assigned a height ID
-* `diameter` - a numeric variable, each indexed row (tree observation) has a defined tree diameter
-* `date_planted` - a date variable, each indexed row (tree observation) has a specific date on which the tree was planted
+
+-   `tree_id` - a quantitative variable, each indexed row (tree observation is assigned a specific numeric value to serve as a tree identifier
+-   `genus_name` - a character variable, each indexed row (tree observation) is assigned to a specific genus name
+-   `species_name` - a character variable, each indexed row (tree observation) is assigned to a specific species name
+-   `on_street` - a character variable, each indexed row (tree observation) is associated with a specific street 
+-   `neighbourhood_name` - a character variable, each indexed row (tree observation) is located in a specific neighbourhood 
+-   `height_range_id` - a numeric variable, each indexed row (tree observation) is assigned a height ID
+-   `diameter` - a numeric variable, each indexed row (tree observation) has a defined tree diameter
+-   `date_planted` - a date variable, each indexed row (tree observation) has a specific date on which the tree was planted
 
 <!----------------------------------------------------------------------------->
 
